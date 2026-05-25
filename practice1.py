@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 random_email = f"rizme_user{random.randint(1, 9999)}@gmail.com"
-t = 2
+t = 2.5
 
 #1. Launch browser
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -161,12 +161,35 @@ print("Validation Succeed: Continue button is clicked")
 time.sleep(t)
 
 #16. Verify that 'Logged in as username' is visible
-#logged_in_as_username = driver.find_element(By.PARTIAL_LINK_TEXT, "Logged in as") #since it located in (a) so need to use XPATH
-logged_in_as_username = driver.find_element(By.XPATH, "//a[contains(., 'Logged in as')]")
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# There is advertisement so we need to close it then bot can detect the 'Logged in as'
+logged_in_as_username = WebDriverWait(driver, 10).until(
+    EC.visibility_of_element_located((By.XPATH, "//a[contains(., 'Logged in as')]"))
+)
+
 assert logged_in_as_username.is_displayed()
 print("Validation Succeed: Logged in as username is visible!")
 time.sleep(t)
 
 #17. Click 'Delete Account' button
+delete_account = WebDriverWait(driver, 10).until(
+    EC.visibility_of_element_located((By.XPATH, "//a[contains(., 'Delete Account')]"))
+)
 
-#18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+assert delete_account.is_displayed()
+delete_account.click()
+print("Validation Succeed: Delete Account is clicked!")
+time.sleep(t)
+
+#18. Verify that 'ACCOUNT DELETED!' is visible
+account_deleted = driver.find_element(By.XPATH, "//b[contains(text(), 'Account Deleted!')]")
+assert account_deleted.is_displayed()
+print("Validation Succeed: Account Deleted Page!")
+time.sleep(t)
+
+#19. click 'Continue' button
+driver.find_element(By.CSS_SELECTOR, "a[data-qa='continue-button']").click()
+print("Validation Succeed: Continue button is clicked")
+time.sleep(t)
