@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 random_email = f"adam_user{random.randint(1, 9999)}@gmail.com"
-t = 1.5
+t = 2
 
 #1. Launch browser
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -76,22 +76,80 @@ print("Validation Succeed: Main form filled!")
 time.sleep(t)
 
 #10. Select checkbox 'Sign up for our newsletter!'
-
-# A. tick box for newsletter
 driver.find_element(By.ID, "newsletter").click()
 print("Validation Succeed: Checkbox clicked!")
 time.sleep(t)
 
-# B. tick box for Receive special offers
+#11. Select checkbox 'Receive special offers from our partners!'
 driver.find_element(By.ID, "optin").click()
 print("Validation Succeed: Receive special offers clicked!")
 time.sleep(t)
 
-#11. Select checkbox 'Receive special offers from our partners!'
+#12. Fill details: 
 
-#12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
+# First name
+driver.find_element(By.ID, "first_name").send_keys("Muhamad Adam Irfan")
+print("Validation Succeed: First Name filled")
+time.sleep(t)
+
+# Last name 
+driver.find_element(By.ID, "last_name").send_keys("Mohd Nizam")
+print("Validation Succeed: Last Name filled")
+time.sleep(t)
+
+# Company 
+driver.find_element(By.ID, "company").send_keys("Coreium Sdn Bhd")
+time.sleep(t)
+
+# Address 
+driver.find_element(By.ID, "address1").send_keys("Taman Maju")
+time.sleep(t)
+
+# Address2 
+driver.find_element(By.ID, "address2").send_keys("Seri Iskandar")
+time.sleep(t)
+
+# Country 
+Select(driver.find_element(By.ID, "country")).select_by_value("Singapore")
+time.sleep(t)
+
+# State
+driver.find_element(By.ID, "state").send_keys("Perak")
+time.sleep(t)
+
+# City 
+driver.find_element(By.ID, "city").send_keys("Entahla")
+time.sleep(t)
+
+# Zipcode 
+driver.find_element(By.ID, "zipcode").send_keys("32610")
+time.sleep(t)
+
+# Mobile Number random
+
+# a. Initial mobile code in Malaysia
+prefixes = ["011", "012", "013", "014", "016", "017", "018", "019"]
+random_prefix = random.choice(prefixes)
+
+# b. Generate remaining 7 numbers 
+# if 011 then the remaining numbers is 8 digit meanwhile then rest 7 digits
+if random_prefix == "011":
+    remaining_digits = str(random.randint(10000000, 99999999))  # 8 digits
+else:
+    remaining_digits = str(random.randint(1000000, 9999999))    # 7 digits
+
+# c. Combine both
+random_phone = random_prefix + remaining_digits
+
+driver.find_element(By.ID, "mobile_number").send_keys(random_phone)
+print("Validation Succeed: Mobile Number filled")
+time.sleep(t)
 
 #13. Click 'Create Account button'
+
+driver.find_element(By.CSS_SELECTOR, "button[data-qa='create-account']").click()
+print("Validation Succeed: Create Account is clicked")
+time.sleep(t)
 
 #14. Verify that 'ACCOUNT CREATED!' is visible
 
