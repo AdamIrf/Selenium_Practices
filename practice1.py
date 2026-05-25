@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-random_email = f"adam_user{random.randint(1, 9999)}@gmail.com"
+random_email = f"rizme_user{random.randint(1, 9999)}@gmail.com"
 t = 2
 
 #1. Launch browser
@@ -156,8 +156,16 @@ print("Validation Succeed: Arrived Account Created Page!")
 time.sleep(t)
 
 #15. Click 'Continue' button
+driver.find_element(By.CSS_SELECTOR, "a[data-qa='continue-button']").click()
+print("Validation Succeed: Continue button is clicked")
+time.sleep(t)
 
 #16. Verify that 'Logged in as username' is visible
+#logged_in_as_username = driver.find_element(By.PARTIAL_LINK_TEXT, "Logged in as") #since it located in (a) so need to use XPATH
+logged_in_as_username = driver.find_element(By.XPATH, "//a[contains(., 'Logged in as')]")
+assert logged_in_as_username.is_displayed()
+print("Validation Succeed: Logged in as username is visible!")
+time.sleep(t)
 
 #17. Click 'Delete Account' button
 
