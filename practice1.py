@@ -1,11 +1,12 @@
 import time
+import random
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-email = "emailanda22@gmail.com"
-t = 1
+random_email = f"adam_user{random.randint(1, 9999)}@gmail.com"
+t = 1.5
 
 #1. Launch browser
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -32,7 +33,7 @@ time.sleep(t)
 
 #6. Enter name and email address
 driver.find_element(By.NAME, "name").send_keys("Adam Irfan")
-driver.find_element(By.XPATH, "//input[@data-qa='signup-email']").send_keys(email) #each automation test need to change email because one new got rejected
+driver.find_element(By.XPATH, "//input[@data-qa='signup-email']").send_keys(random_email) #each automation test need to change email because one new got rejected
 print("Validation Succeed: name and email address")
 time.sleep(t)
 
@@ -75,10 +76,13 @@ print("Validation Succeed: Main form filled!")
 time.sleep(t)
 
 #10. Select checkbox 'Sign up for our newsletter!'
+
+# A. tick box for newsletter
 driver.find_element(By.ID, "newsletter").click()
 print("Validation Succeed: Checkbox clicked!")
 time.sleep(t)
 
+# B. tick box for Receive special offers
 driver.find_element(By.ID, "optin").click()
 print("Validation Succeed: Receive special offers clicked!")
 time.sleep(t)
