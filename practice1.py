@@ -40,6 +40,7 @@ print("Validation Succeed: EAI is visibled")
 time.sleep(3)
 
 #9. Fill details: Title, Name, Email, Password, Date of birth
+print("nama saya adam")
 
 #10. Select checkbox 'Sign up for our newsletter!'
 
