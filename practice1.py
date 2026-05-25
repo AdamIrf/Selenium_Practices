@@ -150,12 +150,10 @@ print("Validation Succeed: Create Account is clicked")
 time.sleep(t)
 
 #14. Verify that 'ACCOUNT CREATED!' is visible
-"""
-account_information = driver.find_element(By.XPATH, "//b[contains(text(), 'Enter Account Information')]")
-assert account_information.is_displayed()
-print("Validation Succeed: EAI is visibled")
+account_created = driver.find_element(By.XPATH, "//b[contains(text(), 'Account Created!')]")
+assert account_created.is_displayed()
+print("Validation Succeed: Arrived Account Created Page!")
 time.sleep(t)
-"""
 
 #15. Click 'Continue' button
 
