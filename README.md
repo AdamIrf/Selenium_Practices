@@ -27,6 +27,7 @@ This repository contains automated test scripts developed using **Selenium WebDr
    ```
 
 ## 📝 Future Enhancements
+* Add advertisement blocker to ensure the smoothness of test process.
 * Implement the **Page Object Model (POM)** design pattern to separate locators from test logic.
 * Integrate **PyTest** framework for advanced test reporting and assertions.
 * Add automated screenshot capture for failed test steps.
