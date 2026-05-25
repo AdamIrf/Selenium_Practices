@@ -86,7 +86,6 @@ print("Validation Succeed: Receive special offers clicked!")
 time.sleep(t)
 
 #12. Fill details: 
-
 # First name
 driver.find_element(By.ID, "first_name").send_keys("Muhamad Adam Irfan")
 print("Validation Succeed: First Name filled")
@@ -146,7 +145,6 @@ print("Validation Succeed: Mobile Number filled")
 time.sleep(t)
 
 #13. Click 'Create Account button'
-
 driver.find_element(By.CSS_SELECTOR, "button[data-qa='create-account']").click()
 print("Validation Succeed: Create Account is clicked")
 time.sleep(t)
