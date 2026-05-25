@@ -40,7 +40,26 @@ print("Validation Succeed: EAI is visibled")
 time.sleep(3)
 
 #9. Fill details: Title, Name, Email, Password, Date of birth
-print("nama saya adam")
+# A. Select Mr by check inspect Id button
+driver.find_element(By.ID, "id_gender1").click()
+
+# B. Enter Password
+driver.find_element(By.ID, "password").send_keys("KataLaluanAnda123")
+
+# C. Select Date of Birth using dropdown list
+from selenium.webdriver.support.ui import Select
+
+# Day
+Select(driver.find_element(By.ID, "days")).select_by_value("15")
+
+# Month
+Select(driver.find_element(By.ID, "months")).select_by_value("5")
+
+# Year
+Select(driver.find_element(By.ID, "years")).select_by_value("2000")
+
+print("Validation Succeed: Main form filled!")
+time.sleep(2)
 
 #10. Select checkbox 'Sign up for our newsletter!'
 
