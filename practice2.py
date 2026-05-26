@@ -1,6 +1,4 @@
-import time
-import random
-import json
+import time, random, json
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -69,6 +67,6 @@ assert driver.find_element(By.XPATH, "//b[contains(text(), 'Account Deleted!')]"
 print("Validation Succeed: Account Deleted Page!")
 
 #11. Click continue button
-driver.find_element(By.CSS_SELECTOR, "a[data-qa='continue-button']")
+driver.find_element(By.CSS_SELECTOR, "a[data-qa='continue-button']").click()
 print("Validation Succeed: Continue button is clicked")
 
