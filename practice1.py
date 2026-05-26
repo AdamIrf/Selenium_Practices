@@ -8,8 +8,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 random_email = f"rizme_user{random.randint(1, 9999)}@gmail.com"
 t = 2.5
 
+# Blocks pop-up ads
+options = webdriver.ChromeOptions()
+options.add_argument("--disable-popup-blocking")  
+
 #1. Launch browser
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 #2. Navigate to url 'http://automationexercise.com'
 driver.get("http://automationexercise.com")
