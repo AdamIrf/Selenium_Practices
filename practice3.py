@@ -1,21 +1,34 @@
-import time, random, json
+import allure
+import time
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 
-t = 2.5
+@allure.feature("Carian Google")
+def test_google_search():
+    # Buka pelayar web Chrome
+    driver = webdriver.Chrome()
+    driver.maximize_window()
 
-options = webdriver.ChromeOptions()
-options.add_argument("--disable-popup-blocking")  # Blocks pop-up ads
+    try:
+        with allure.step("1. Layari Google"):
+            driver.get("https://google.com")
+            time.sleep(1)
 
-#1. Launch browser
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+        with allure.step("2. Masukkan kata kunci carian"):
+            search_box = driver.find_element(By.NAME, "q")
+            search_box.send_keys("Selenium Python")
 
-#2. Navigate to url 'http://automationexercise.com'
-driver.get("http://automationexercise.com")
-driver.maximize_window()
-time.sleep(t)
+        with allure.step("3. Tekan Enter"):
+            search_box.send_keys(Keys.RETURN)
+            time.sleep(2)
 
+        with allure.step("4. Semak tajuk halaman"):
+            assert "Selenium" in driver.title
+
+    except Exception as e:
+        # Ambil gambar jika gagal
+        allure.attach(driver.get_screenshot_as_png(), name="gagal", attachment_type=allure.attachment_type.PNG)
+        raise e
+    finally:
+        driver.quit()
