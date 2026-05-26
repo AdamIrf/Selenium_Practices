@@ -61,5 +61,14 @@ print("Validation Succeed: Logged in as username is visible!")
 time.sleep(t)
 
 #9. Click 'Delete Account' button
+WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(., 'Delete Account')]"))).click()
+print("Validation Succeed: Delete Account is clicked!")
 
 #10. Verify that 'ACCOUNT DELETED!' is visible
+assert driver.find_element(By.XPATH, "//b[contains(text(), 'Account Deleted!')]").is_displayed()
+print("Validation Succeed: Account Deleted Page!")
+
+#11. Click continue button
+driver.find_element(By.CSS_SELECTOR, "a[data-qa='continue-button']")
+print("Validation Succeed: Continue button is clicked")
+
