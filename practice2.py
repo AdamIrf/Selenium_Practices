@@ -1,3 +1,9 @@
+"""
+Important Note!
+1. Please register your account first before execute the program.
+2. Please edit file practice2.json by filled your registered account before use.
+"""
+
 import time, random, json
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
