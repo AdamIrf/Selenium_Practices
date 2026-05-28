@@ -1,0 +1,5 @@
+Validation Succeed: Main Page Visible!
+Validation Succeed: 'Login to your account!' is visible
+Success Login
+Validation Succeed: Logged in as username is visible!
+Validation Succeed: Delete Account is clicked!

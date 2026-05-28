@@ -1,0 +1,18 @@
+Validation Succeed: Main Page Visible!
+Validation Succeed: 'New User Signup!' is visible
+Validation Succeed: name and email address
+Validation Succeed: Signup button is clicked
+Validation Succeed: EAI is visibled
+Validation Succeed: Main form filled!
+Validation Succeed: Checkbox clicked!
+Validation Succeed: Receive special offers clicked!
+Validation Succeed: First Name filled
+Validation Succeed: Last Name filled
+Validation Succeed: Mobile Number filled
+Validation Succeed: Create Account is clicked
+Validation Succeed: Arrived Account Created Page!
+Validation Succeed: Continue button is clicked
+Validation Succeed: Logged in as username is visible!
+Validation Succeed: Delete Account is clicked!
+Validation Succeed: Account Deleted Page!
+Validation Succeed: Continue button is clicked
